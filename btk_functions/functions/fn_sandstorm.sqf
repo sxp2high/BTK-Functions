@@ -1,17 +1,21 @@
 /*
-[player, 0.06, 0.5, true] call BTK_fnc_sandstorm;
+[] spawn BTK_fnc_sandstorm;
 */
 
 
-private ["_obj","_density","_colorCoef","_newspapers","_pos","_velocity","_relPos","_color","_alpha","_ps","_newsParams","_newsRandom","_newsCircle","_newsInterval","_times","_herald","_tribune","_result"];
+private ["_density","_colorCoef","_newspapers","_velocity","_relPos","_color","_alpha","_ps","_newsParams","_newsRandom","_newsCircle","_newsInterval","_times","_herald","_tribune","_result"];
 
 
-_obj = _this select 0;
-_density = if ((count _this) > 1) then {_this select 1; } else { 0.06; };
-_colorCoef = if ((count _this) > 2) then { _this select 2; } else { 0.5; };
-_newspapers = if ((count _this) > 3) then { _this select 3; } else { false; };
+// No server
+if (isServer) exitWith {};
 
-_pos = getPosATL _obj;
+
+// Parameter
+_density = 0.06;
+_colorCoef = 0.5;
+_newspapers = false;
+//_paths = ["\A3\data_f\cl_grass1.p3d","\A3\data_f\cl_grass2.p3d","\A3\data_f\cl_rock1.p3d","\A3\data_f\cl_leaf.p3d","\A3\data_f\cl_leaf2.p3d","\A3\data_f\cl_leaf3.p3d","\A3\data_f\cl_feathers2.p3d","\A3\data_f\cl_paper1.p3d","\A3\data_f\cl_plastic1.p3d"];
+//_paths = ["\A3\data_f\cl_paper1.p3d"];
 
 
 // Dust
@@ -21,50 +25,53 @@ _velocity = [(wind select 0), (wind select 1), 0];
 _relPos = [-((_velocity select 1) * (_duration / 2)), 0, -6];
 _color = [1.0 * _colorCoef, 0.9 * _colorCoef, 0.8 * _colorCoef];
 _alpha = 0.2;
+_radius = 20; // 120
+_radiusHeight = 4;
 
 
-_ps = "#particlesource" createVehicleLocal _pos;  
-_ps setParticleParams [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 12, 8, 0], "", "Billboard", 1, _duration, _relPos, _velocity, 1, 1.275, 1, 0, [5], [_color + [0], _color + [_alpha], _color + [0]], [1000], 1, 0, "", "", _obj];
-_ps setParticleRandom [2, [120, 120, 4], [0, 0, 0], 1, 0, [0, 0, 0, 0.05], 0, 0];
-_ps setParticleCircle [0.1, [0, 0, 0]];
-_ps setDropInterval _density;
+// Papers
+/*_paper1 = (_paths call BIS_fnc_selectRandom);
+_paper2 = (_paths call BIS_fnc_selectRandom);
+_paper3 = (_paths call BIS_fnc_selectRandom);
+_papers = [_paper1,_paper2,_paper3];
+_papersCurrent = [];
+
+_newsRandom = [0, [_radius, _radius, _radiusHeight], [5, 5, 0], 2, 0.3, [0, 0, 0, 0], 10, 0];
+_newsCircle = [0.1, [1, 1, 0]];
+_newsInterval = 0.1;*/
 
 
-//--- Newspapers
-/*_result = if (_newspapers) then {
+// Main loop
+while {true} do {
 
-	_newsParams = [["\A3\Missions_PMC\gnews1.p3d", 1, 0, 1], "", "SpaceObject", 1, 5, [0, 0, 1], _velocity, 1, 1.25, 1, 0.2, [0,1,1,1,0], [[1,1,1,1]], [0.7], 1, 0, "", "", _obj];
-	_newsRandom = [0, [30, 30, 0], [5, 5, 0], 2, 0.3, [0, 0, 0, 0], 10, 0];
-	_newsCircle = [0.1, [1, 1, 0]];
-	_newsInterval = 1;
+	// Alive, not flying, no rain & fog, not on water
+	waitUntil {sleep 0.935; (alive player) && (((getPosATL (vehicle player)) select 2) < 5) && (rain == 0) && (fog == 0) && !(surfaceIsWater (getPosATL (vehicle player)))};
 
-	_times = "#particlesource" createVehicleLocal _pos;  
-	_times setParticleParams _newsParams;
-	_times setParticleRandom _newsRandom;
-	_times setParticleCircle _newsCircle;
-	_times setDropInterval _newsInterval;
+	_vehicle = vehicle player;
+	_vehiclePos = (getPosATL _vehicle);
 
-	_newsParams set [0, ["\A3\Missions_PMC\gnews2.p3d", 1, 0, 1]];
-	_herald = "#particlesource" createVehicleLocal _pos;  
-	_herald setParticleParams _newsParams;
-	_herald setParticleRandom _newsRandom;
-	_herald setParticleCircle _newsCircle;
-	_herald setDropInterval _newsInterval;
+	_ps = "#particlesource" createVehicleLocal _vehiclePos;
+	_ps setParticleParams [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 12, 8, 0], "", "Billboard", 1, _duration, _relPos, _velocity, 1, 1.275, 1, 0, [5], [_color + [0], _color + [_alpha], _color + [0]], [1000], 1, 0, "", "", _vehicle];
+	_ps setParticleRandom [2, [_radius, _radius, _radiusHeight], [0, 0, 0], 1, 0, [0, 0, 0, 0.05], 0, 0];
+	_ps setParticleCircle [0.2, [0, 0, 0]];
+	_ps setDropInterval _density;
 
-	_newsParams set [0, ["\A3\Missions_PMC\gnews3.p3d", 1, 0, 1]];
-	_tribune = "#particlesource" createVehicleLocal _pos;  
-	_tribune setParticleParams _newsParams;
-	_tribune setParticleRandom _newsRandom;
-	_tribune setParticleCircle _newsCircle;
-	_tribune setDropInterval _newsInterval;
+	/*{
+		_paperPs = "#particlesource" createVehicleLocal _vehiclePos;
+		_paperPs setParticleParams [[_x, 1, 0, 1], "", "SpaceObject", 1, 5, _relPos, _velocity, 1, 1.25, 1, 0.2, [0,1,1,1,0], [[1,1,1,1]], [0.7], 1, 0, "", "", _vehicle];
+		_paperPs setParticleRandom _newsRandom;
+		_paperPs setParticleCircle _newsCircle;
+		_paperPs setDropInterval _newsInterval;
+		_papersCurrent pushBack _paperPs;
+	} forEach _papers;*/
 
-	[_ps,_times,_herald,_tribune]
+	// Dead, flying, rain, fog, or on water
+	waitUntil {sleep 1.117; !(alive player) || (vehicle player != _vehicle) || (rain > 0) || (fog > 0) || (surfaceIsWater (getPosATL (vehicle player)))};
+	
+	deleteVehicle _ps;
+	/*{
+		deleteVehicle _x;
+	} forEach _papers;
+	_papersCurrent = [];*/
 
-} else {
-
-	[_ps]
-
-};*/
-
-
-true
+};
