@@ -1,14 +1,11 @@
-private ["_addonTitle","_addonVersion","_addonVersion"];
+// Wait for player
+waitUntil {(isDedicated) || !(isNull player)};
 
 
 // Variables
 _addonTitle = "BTK Functions";
 _addonVersion = "1.0.0";
-_addonLink = "https://github.com/sxp2high/BTK-BTK-Functions";
-
-
-// Wait for player
-waitUntil {(isDedicated) || !(isNull player)};
+_addonLink = "https://github.com/sxp2high/BTK-Functions";
 
 
 // Server init
@@ -34,12 +31,8 @@ if (isServer) then {
 if (!(isNil "btk_functions_init")) exitWith {};
 
 
-// Init flag
-btk_functions_init = true;
-
-
 // Exit dedicated
-if (isDedicated) exitWith {};
+if (isDedicated) exitWith { btk_functions_init = true; };
 
 
 // Variables
@@ -56,4 +49,8 @@ btk_keys_current = [];
 
 
 // Log
-[format["%1 initialized!", _addonTitle]] call BTK_fnc_log;
+[format["%1 v%2 initialized!", _addonTitle, _addonVersion]] call BTK_fnc_log;
+
+
+// Init flag
+btk_functions_init = true;

@@ -1,21 +1,17 @@
 /*
-[] spawn BTK_fnc_sandstorm;
+	[] spawn BTK_fnc_sandstorm;
 */
 
 
-private ["_density","_colorCoef","_newspapers","_velocity","_relPos","_color","_alpha","_ps","_newsParams","_newsRandom","_newsCircle","_newsInterval","_times","_herald","_tribune","_result"];
-
-
-// No server
-if (isServer) exitWith {};
+// No dedicated
+if (isDedicated) exitWith {};
 
 
 // Parameter
-_density = 0.06;
+_density = 0.05;
 _colorCoef = 0.5;
 _newspapers = false;
 //_paths = ["\A3\data_f\cl_grass1.p3d","\A3\data_f\cl_grass2.p3d","\A3\data_f\cl_rock1.p3d","\A3\data_f\cl_leaf.p3d","\A3\data_f\cl_leaf2.p3d","\A3\data_f\cl_leaf3.p3d","\A3\data_f\cl_feathers2.p3d","\A3\data_f\cl_paper1.p3d","\A3\data_f\cl_plastic1.p3d"];
-//_paths = ["\A3\data_f\cl_paper1.p3d"];
 
 
 // Dust
@@ -23,9 +19,9 @@ _duration = 1.3;
 //_velocity = [0, 7, 0];
 _velocity = [(wind select 0), (wind select 1), 0];
 _relPos = [-((_velocity select 1) * (_duration / 2)), 0, -6];
-_color = [1.0 * _colorCoef, 0.9 * _colorCoef, 0.8 * _colorCoef];
+_color = [(1.0 * _colorCoef), (0.9 * _colorCoef), (0.8 * _colorCoef)];
 _alpha = 0.2;
-_radius = 20; // 120
+_radius = 100;
 _radiusHeight = 4;
 
 
@@ -34,11 +30,12 @@ _radiusHeight = 4;
 _paper2 = (_paths call BIS_fnc_selectRandom);
 _paper3 = (_paths call BIS_fnc_selectRandom);
 _papers = [_paper1,_paper2,_paper3];
-_papersCurrent = [];
+_papersCurrent = [];*/
+
 
 _newsRandom = [0, [_radius, _radius, _radiusHeight], [5, 5, 0], 2, 0.3, [0, 0, 0, 0], 10, 0];
 _newsCircle = [0.1, [1, 1, 0]];
-_newsInterval = 0.1;*/
+_newsInterval = 0.1;
 
 
 // Main loop

@@ -1,11 +1,23 @@
 /*
-	nul = [this, 2, true, 10, 10, 100] spawn BTK_fnc_vehicleRespawn;
-	vehicle
-	repsawns
-	respwn deserted?
-	respawn destroyed time
-	respawn deserted time
-	respawn deserted distance
+	File: fn_vehicleRespawn.sqf
+	Author: sxp2high (BTK) (btk@arma3.cc)
+
+	Description:
+	Vehicle respawn.
+
+	Parameter(s):
+		0: OBJECT - vehicle
+		1: NUMBER - how many respawns
+		2: BOOLEAN - true to also respawn when deserted
+		3: NUMBER - respawn destroyed time
+		4: NUMBER - respawn deserted time
+		5: NUMBER - respawn deserted distance to players
+
+	Returns:
+	NIL
+
+	Syntax:
+	[this, 2, true, 10, 10, 100] spawn BTK_fnc_vehicleRespawn;
 */
 
 
@@ -86,7 +98,7 @@ _desertedCheck = {
 };
 
 
-
+// Random delay
 sleep (random 10);
 
 

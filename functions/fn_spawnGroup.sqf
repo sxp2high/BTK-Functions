@@ -68,10 +68,17 @@ _classes =  switch (_type) do {
 		];
 	};
 
+	case ("glt_me") : {
+		[
+			["GLT_Middle_East_Teamleader"],
+			["GLT_Middle_East_Ammobearer","GLT_Middle_East_Autorifleman","GLT_Middle_East_Engineer","GLT_Middle_East_Exp_Specialist","GLT_Middle_East_Grenadier","GLT_Middle_East_Marksman","GLT_Middle_East_Medical_Specialist","GLT_Middle_East_Rifleman6","GLT_Middle_East_Rifleman2","GLT_Middle_East_Rifleman1","GLT_Middle_East_Rifleman4","GLT_Middle_East_Rifleman5","GLT_Middle_East_Rifleman3","GLT_Middle_East_Rifleman_AA","GLT_Middle_East_Rifleman_AT","GLT_Middle_East_Rifleman_LAT"]
+		];
+	};
+
 	case ("duala_insurgents") : {
 		[
-			["GLT_Middle_East_Teamleader", "GLT_Middle_East_Rifleman1", "GLT_Middle_East_Rifleman2", "CAF_AG_AFR_P_AK47","CAF_AG_AFR_P_AK74","CAF_AG_AFR_P_GL"],
-			["GLT_Middle_East_Ammobearer", "GLT_Middle_East_Autorifleman", "GLT_Middle_East_Engineer", "GLT_Middle_East_Exp_Specialist","GLT_Middle_East_Grenadier", "GLT_Middle_East_Marksman", "GLT_Middle_East_Medical_Specialist", "GLT_Middle_East_Rifleman_AA", "GLT_Middle_East_Rifleman_AT", "GLT_Middle_East_Rifleman_LAT", "GLT_Middle_East_Rifleman1", "GLT_Middle_East_Rifleman2", "GLT_Middle_East_Rifleman3", "GLT_Middle_East_Rifleman4", "GLT_Middle_East_Rifleman5", "GLT_Middle_East_Rifleman6", "GLT_Middle_East_Sniper", "CAF_AG_AFR_P_AK47","CAF_AG_AFR_P_AK74","CAF_AG_AFR_P_GL","CAF_AG_AFR_P_PKM","CAF_AG_AFR_P_RPG","CAF_AG_AFR_P_RPK74","CAF_AG_AFR_P_SVD"]
+			["GLT_Middle_East_Teamleader", "GLT_Middle_East_Rifleman1", "GLT_Middle_East_Rifleman2"],
+			["GLT_Middle_East_Ammobearer", "GLT_Middle_East_Autorifleman", "GLT_Middle_East_Engineer", "GLT_Middle_East_Exp_Specialist","GLT_Middle_East_Grenadier", "GLT_Middle_East_Marksman", "GLT_Middle_East_Medical_Specialist", "GLT_Middle_East_Rifleman_AA", "GLT_Middle_East_Rifleman_AT", "GLT_Middle_East_Rifleman_LAT", "GLT_Middle_East_Rifleman1", "GLT_Middle_East_Rifleman2", "GLT_Middle_East_Rifleman3", "GLT_Middle_East_Rifleman4", "GLT_Middle_East_Rifleman5", "GLT_Middle_East_Rifleman6", "GLT_Middle_East_Sniper"]
 		];
 	};
 

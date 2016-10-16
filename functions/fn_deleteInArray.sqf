@@ -1,9 +1,9 @@
 /*
-	File: fn_arrayDelete.sqf
+	File: fn_deleteInArray.sqf
 	Author: sxp2high (BTK) (btk@arma3.cc)
 
 	Description:
-	Delete entry from array. (Including duplicates)
+	Delete entry from array. (Including all duplicates)
 
 	Parameter(s):
 		0: ARRAY - array to delete from
@@ -13,7 +13,7 @@
 	ARRAY - new array
 
 	Syntax:
-	_deleted = [[1,2,3], 2] call BTK_fnc_arrayDelete; // Array afterwards: [1,3]
+	_deleted = [[1,2,3], 2] call BTK_fnc_deleteInArray; // Array afterwards: [1,3]
 */
 
 

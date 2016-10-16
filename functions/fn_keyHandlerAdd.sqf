@@ -30,7 +30,7 @@ waituntil {!(isNull (findDisplay 46))};
 
 
 // Delay
-sleep (0.2 + (random 0.8));
+sleep (0.1 + (random 0.5));
 
 
 // Add keyhandler

@@ -26,10 +26,6 @@ if (isServer) then {
 if (!(isNil "btk_mp_init")) exitWith {};
 
 
-// Init flag
-btk_mp_init = true;
-
-
 // Add for both player & server
 "btk_mp_handler" addPublicVariableEventHandler {
 	(_this select 1) call BTK_fnc_mpExec;
@@ -37,7 +33,7 @@ btk_mp_init = true;
 
 
 // Exit dedicated
-if (isDedicated) exitWith {};
+if (isDedicated) exitWith { btk_mp_init = true; };
 
 
 // Player init
@@ -59,3 +55,7 @@ if (isDedicated) exitWith {};
 	};
 
 };
+
+
+// Init flag
+btk_mp_init = true;

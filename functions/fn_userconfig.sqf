@@ -35,7 +35,7 @@ _var = _this select 2;
 if (isNil _var) then {
 
 	// Addon?
-	if (isClass (configFile >> "CfgPatches" >> "btk_debug")) then {
+	if (isClass (configFile >> "CfgPatches" >> format["%1", _name])) then {
 
 		// Try addon default
 		[] call (compile (preprocessFileLineNumbers format["\%1\%1.hpp", _name]));

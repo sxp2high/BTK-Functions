@@ -12,11 +12,11 @@
 	BOOLEAN - true when done
 
 	Syntax:
-	_loaded = [] call BTK_fnc_gearSave;
+	_saved = [] call BTK_fnc_gearSave;
 */
 
 
-private ["_handgunWeapon","_handgunItems","_secondaryWeapon","_secondaryWeaponItems","_primaryWeapon","_primaryWeaponItems","_assignedItems","_backpack","_backpackItems","_uniform","_uniformItems","_vest","_vestItems","_magazines","_headgear","_goggles","_currentMuzzle"];
+private ["_handgunWeapon","_handgunItems","_secondaryWeapon","_secondaryWeaponItems","_primaryWeapon","_primaryWeaponItems","_assignedItems","_backpack","_backpackItems","_uniform","_uniformItems","_vest","_vestItems","_magazines","_headgear","_goggles","_currentMuzzle","_designatorLoaded"];
 
 
 // Just in case
@@ -25,6 +25,14 @@ if (isDedicated) exitWith {};
 
 // Dont save when player is dead (weapon is dropped etc.)
 if (!(alive player)) exitWith {};
+
+
+// Disabled at the moment
+if (!(isNil "btk_gear_respawn_paused") || !(isNil "btk_gear_respawning")) exitWith {};
+
+
+// Grenades seperate
+_grenadeTypes = ["HandGrenade","MiniGrenade","SmokeShell","SmokeShellYellow","SmokeShellRed","SmokeShellGreen","SmokeShellPurple","SmokeShellBlue","SmokeShellOrange","Chemlight_green","Chemlight_red","Chemlight_yellow","Chemlight_blue"];
 
 
 // Get data
@@ -51,14 +59,20 @@ _vestItems = [];
 {
 	if (!(isClass (configFile >> "CfgMagazines" >> _x))) then { _vestItems pushBack _x; };
 } forEach (vestItems player);
-_magazines = magazinesAmmoFull player;
+_magazines = [];
+_grenades = [];
+{
+	if ((_x select 0) in _grenadeTypes) then { _grenades pushBack (_x select 0); } else { _magazines pushBack _x; };
+} forEach (magazinesAmmoFull player);
 _headgear = headgear player;
 _goggles = goggles player;
 _currentMuzzle = if ((vehicle player) == player) then { (currentMuzzle player); } else { ""; };
+_designatorLoaded = (player ammo "Laserdesignator");
 
 
 // Compile
-btk_gear_saved = [_handgunWeapon,_handgunItems,_secondaryWeapon,_secondaryWeaponItems,_primaryWeapon,_primaryWeaponItems,_assignedItems,_backpack,_backpackItems,_uniform,_uniformItems,_vest,_vestItems,_magazines,_headgear,_goggles,_currentMuzzle];
+btk_gear_saved = [_handgunWeapon,_handgunItems,_secondaryWeapon,_secondaryWeaponItems,_primaryWeapon,_primaryWeaponItems,_assignedItems,_backpack,_backpackItems,_uniform,_uniformItems,_vest,_vestItems,_magazines,_grenades,_headgear,_goggles,_currentMuzzle,_designatorLoaded];
 
+systemChat "gear saved";
 
 true

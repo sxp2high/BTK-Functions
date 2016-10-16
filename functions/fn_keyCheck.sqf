@@ -25,7 +25,7 @@ _keys = _this;
 
 
 // Check
-_return = if (({(_x in _keys)} count btk_keys_current) == (count _keys)) then { true; } else { false; };
+_return = if ((({(_x in _keys)} count btk_keys_current) == (count _keys)) && ((count btk_keys_current) == (count _keys))) then { true; } else { false; };
 
 
 _return

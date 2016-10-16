@@ -17,7 +17,7 @@
 	ARRAY - [_vehicle, _group];
 
 	Syntax:
-	_vehicleArray = [_position, west, "B_MRAP_01_hmg_F", 150, 5, [2,6]] call BTK_fnc_spawnVehicle;
+	_vehicleArray = [_position, "west", "B_MRAP_01_hmg_F", 150, 5, [2,6]] call BTK_fnc_spawnVehicle;
 */
 
 
@@ -54,7 +54,9 @@ _classesRegular = switch (_faction) do {
 	case (resistance) : { ["B_Soldier_F"]; };
 	case ("west") : { ["B_Soldier_SL_F", "B_Soldier_TL_F", "B_soldier_AR_F", "B_soldier_exp_F", "B_Soldier_GL_F", "B_soldier_M_F", "B_medic_F", "B_Soldier_F", "B_soldier_repair_F", "B_soldier_LAT_F", "B_Soldier_lite_F"]; };
 	case ("me") : { ["CAF_AG_ME_T_AK47", "CAF_AG_ME_T_AK74", "CAF_AG_ME_T_GL", "CAF_AG_ME_T_AK47", "CAF_AG_ME_T_AK74", "CAF_AG_ME_T_GL", "CAF_AG_ME_T_PKM", "CAF_AG_ME_T_RPG", "CAF_AG_ME_T_RPK74", "CAF_AG_ME_T_SVD"]; };
+	case ("glt_me") : { ["GLT_Middle_East_Ammobearer","GLT_Middle_East_Autorifleman","GLT_Middle_East_Engineer","GLT_Middle_East_Exp_Specialist","GLT_Middle_East_Grenadier","GLT_Middle_East_Marksman","GLT_Middle_East_Medical_Specialist","GLT_Middle_East_Rifleman6","GLT_Middle_East_Rifleman2","GLT_Middle_East_Rifleman1","GLT_Middle_East_Rifleman4","GLT_Middle_East_Rifleman5","GLT_Middle_East_Rifleman3","GLT_Middle_East_Rifleman_AA","GLT_Middle_East_Rifleman_AT","GLT_Middle_East_Rifleman_LAT"]; };
 	case ("duala_insurgents") : { ["CAF_AG_ME_T_AK47", "CAF_AG_ME_T_AK74", "CAF_AG_ME_T_GL", "CAF_AG_ME_T_PKM", "CAF_AG_ME_T_RPG", "CAF_AG_ME_T_RPK74", "CAF_AG_ME_T_SVD", "CAF_AG_AFR_P_AK47","CAF_AG_AFR_P_AK74","CAF_AG_AFR_P_GL","CAF_AG_AFR_P_PKM","CAF_AG_AFR_P_RPG","CAF_AG_AFR_P_RPK74","CAF_AG_AFR_P_SVD"]; };
+	//case ("rhs_usarmy") : { ["B_Soldier_SL_F", "B_Soldier_TL_F", "B_soldier_AR_F", "B_soldier_exp_F", "B_Soldier_GL_F", "B_soldier_M_F", "B_medic_F", "B_Soldier_F", "B_soldier_repair_F", "B_soldier_LAT_F", "B_Soldier_lite_F"]; };
 
 };
 
@@ -67,7 +69,10 @@ _classesCrew = switch (_faction) do {
 	case (resistance) : { ["B_Soldier_F"]; };
 	case ("west") : { ["B_Soldier_F"]; };
 	case ("me") : { ["CAF_AG_ME_T_AK47", "CAF_AG_ME_T_AK74", "CAF_AG_ME_T_GL", "CAF_AG_ME_T_AK47", "CAF_AG_ME_T_AK74", "CAF_AG_ME_T_GL", "CAF_AG_ME_T_PKM", "CAF_AG_ME_T_RPG", "CAF_AG_ME_T_RPK74", "CAF_AG_ME_T_SVD"]; };
+	case ("glt_me") : { ["GLT_Middle_East_Ammobearer","GLT_Middle_East_Autorifleman","GLT_Middle_East_Engineer","GLT_Middle_East_Exp_Specialist","GLT_Middle_East_Grenadier","GLT_Middle_East_Marksman","GLT_Middle_East_Medical_Specialist","GLT_Middle_East_Rifleman6","GLT_Middle_East_Rifleman2","GLT_Middle_East_Rifleman1","GLT_Middle_East_Rifleman4","GLT_Middle_East_Rifleman5","GLT_Middle_East_Rifleman3","GLT_Middle_East_Rifleman_AA","GLT_Middle_East_Rifleman_AT","GLT_Middle_East_Rifleman_LAT"]; };
 	case ("duala_insurgents") : { ["CAF_AG_ME_T_AK47", "CAF_AG_ME_T_AK74", "CAF_AG_ME_T_GL", "CAF_AG_ME_T_PKM", "CAF_AG_ME_T_RPG", "CAF_AG_ME_T_RPK74", "CAF_AG_ME_T_SVD", "CAF_AG_AFR_P_AK47","CAF_AG_AFR_P_AK74","CAF_AG_AFR_P_GL","CAF_AG_AFR_P_PKM","CAF_AG_AFR_P_RPG","CAF_AG_AFR_P_RPK74","CAF_AG_AFR_P_SVD"]; };
+	//case ("rhs_usarmy") : { ["rhsusf_army_ocp_crewman", "rhsusf_army_ocp_crewman"]; };
+
 
 };
 
@@ -80,6 +85,7 @@ _classesHeli = switch (_faction) do {
 	case (resistance) : { ["B_Soldier_F"]; };
 	case ("west") : { ["B_helicrew_F"]; };
 	case ("me") : { ["B_Hunter_F"]; };
+	case ("glt_me") : { ["GLT_Middle_East_Ammobearer","GLT_Middle_East_Autorifleman","GLT_Middle_East_Engineer","GLT_Middle_East_Exp_Specialist","GLT_Middle_East_Grenadier","GLT_Middle_East_Marksman","GLT_Middle_East_Medical_Specialist","GLT_Middle_East_Rifleman6","GLT_Middle_East_Rifleman2","GLT_Middle_East_Rifleman1","GLT_Middle_East_Rifleman4","GLT_Middle_East_Rifleman5","GLT_Middle_East_Rifleman3","GLT_Middle_East_Rifleman_AA","GLT_Middle_East_Rifleman_AT","GLT_Middle_East_Rifleman_LAT"]; };
 	case ("duala_insurgents") : { ["CAF_AG_ME_T_AK47", "CAF_AG_ME_T_AK74", "CAF_AG_ME_T_GL", "CAF_AG_ME_T_PKM", "CAF_AG_ME_T_RPG", "CAF_AG_ME_T_RPK74", "CAF_AG_ME_T_SVD", "CAF_AG_AFR_P_AK47","CAF_AG_AFR_P_AK74","CAF_AG_AFR_P_GL","CAF_AG_AFR_P_PKM","CAF_AG_AFR_P_RPG","CAF_AG_AFR_P_RPK74","CAF_AG_AFR_P_SVD"]; };
 
 };
@@ -93,6 +99,7 @@ _classesPlane = switch (_faction) do {
 	case (resistance) : { ["B_Soldier_F"]; };
 	case ("west") : { ["B_Pilot_F"]; };
 	case ("me") : { ["B_Hunter_F"]; };
+	case ("glt_me") : { ["GLT_Middle_East_Ammobearer","GLT_Middle_East_Autorifleman","GLT_Middle_East_Engineer","GLT_Middle_East_Exp_Specialist","GLT_Middle_East_Grenadier","GLT_Middle_East_Marksman","GLT_Middle_East_Medical_Specialist","GLT_Middle_East_Rifleman6","GLT_Middle_East_Rifleman2","GLT_Middle_East_Rifleman1","GLT_Middle_East_Rifleman4","GLT_Middle_East_Rifleman5","GLT_Middle_East_Rifleman3","GLT_Middle_East_Rifleman_AA","GLT_Middle_East_Rifleman_AT","GLT_Middle_East_Rifleman_LAT"]; };
 	case ("duala_insurgents") : { ["GLT_Middle_East_Teamleader", "GLT_Middle_East_Rifleman1", "GLT_Middle_East_Rifleman2", "CAF_AG_AFR_P_AK47","CAF_AG_AFR_P_AK74","CAF_AG_AFR_P_GL", "GLT_Middle_East_Ammobearer", "GLT_Middle_East_Autorifleman", "GLT_Middle_East_Engineer", "GLT_Middle_East_Exp_Specialist","GLT_Middle_East_Grenadier", "GLT_Middle_East_Marksman", "GLT_Middle_East_Medical_Specialist", "GLT_Middle_East_Rifleman_AA", "GLT_Middle_East_Rifleman_AT", "GLT_Middle_East_Rifleman_LAT", "GLT_Middle_East_Rifleman1", "GLT_Middle_East_Rifleman2", "GLT_Middle_East_Rifleman3", "GLT_Middle_East_Rifleman4", "GLT_Middle_East_Rifleman5", "GLT_Middle_East_Rifleman6", "GLT_Middle_East_Sniper", "CAF_AG_AFR_P_AK47","CAF_AG_AFR_P_AK74","CAF_AG_AFR_P_GL","CAF_AG_AFR_P_PKM","CAF_AG_AFR_P_RPG","CAF_AG_AFR_P_RPK74","CAF_AG_AFR_P_SVD"]; };
 
 };
@@ -106,6 +113,7 @@ _vehicleClasses = switch (_faction) do {
 	case (resistance) : { ["B_Hunter_F"]; };
 	case ("west") : { ["B_Truck_01_transport_F", "B_MRAP_01_hmg_F", "B_MRAP_01_F", "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F", "B_APC_Wheeled_01_cannon_F"]; };
 	case ("me") : { ["B_G_Offroad_01_armed_F","CAF_AG_ME_T_Offroad_armed_01","CAF_AG_eeur_r_Offroad_armed_01","B_G_Van_01_transport_F"]; };
+	case ("glt_me") : { ["GLT_Offroad_MEA_Armed"]; };
 	case ("duala_insurgents") : { ["CAF_AG_afr_p_Offroad_armed_01","CAF_AG_eeur_r_Offroad_armed_01","CAF_AG_ME_T_Offroad_armed_01","CAF_AG_eeur_r_van_01","CAF_AG_ME_T_van_01","CAF_AG_afr_p_Offroad","CAF_AG_eeur_r_Offroad","CAF_AG_ME_T_Offroad","rhs_btr70_chdkz","rhs_t72bb_chdkz","GLT_Offroad_MEA_Armed","GLT_Kamaz_Open_MEA","GLT_Kamaz_MEA"]; };
 
 };
@@ -134,9 +142,13 @@ _side = switch (_faction) do {
 
 	case ("west") : { west; };
 	case ("me") : { east; };
+	case ("glt_me") : { east; };
 	case ("duala_insurgents") : { east; };
 
 };
+
+
+//_logged = [format["FACTION: %1m SIDE: %2", _faction, _side]] call BTK_fnc_log;
 
 
 // Create group
@@ -254,12 +266,6 @@ if (!(isNil "btk_ai_skill")) then {
 			_unit setSkill _x;
 		} forEach btk_ai_skill;
 	} forEach (units _group);
-};
-
-
-// Debug
-if (_debug && !(isNil "btk_global_debug")) then {
-	[_group] call BTK_fnc_debugMarker;
 };
 
 

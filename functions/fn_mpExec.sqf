@@ -33,13 +33,13 @@ _execute = false;
 
 
 // Arrays
-_commands = ["action","allowdamage","assignascargo","commandchat","enablesimulation","globalchat","groupchat","hint","moveincargo","ordergetin","playmove","playmovenow","playmusic","playsound","playactionnow","say","setcaptive","setdir","setface","setfuel","setgroupid","setpos","setposasl","setposatl","setrank","setvehiclevarname","sidechat","switchmove","systemchat","unassignvehicle","vehiclechat"];
-_whitelist = ["bis_fnc_spawn","btk_fnc_log","btk_fnc_settaskstate","btk_groupmanager_fnc_setgroupleader"];
+_commands = ["action","allowdamage","assignascargo","commandchat","enablesimulation","globalchat","groupchat","hideobject","hint","moveincargo","ordergetin","playmove","playmovenow","playmusic","playsound","playactionnow","say","say3d","setcaptive","setdir","setface","setfuel","setgroupid","setpos","setposasl","setposatl","setrank","setvehiclevarname","sidechat","switchmove","systemchat","unassignvehicle","vehiclechat"];
+_whitelist = ["bis_fnc_spawn","btk_fnc_log","btk_fnc_settaskstate","btk_groupmanager_fnc_setgroupleader","btk_immersion_fnc_chargerecoverflow","btk_immersion_fnc_backblasteffect","btk_firstaid_fnc_actions","btk_explosives_fnc_disableflow","bis_fnc_endmission"];
 
 
 // Not whitelisted or command?
 if (!((toLower _functionName) in _whitelist) && !((toLower _functionName) in _commands)) exitWith {
-	["BTK_fnc_mpExec", format["Function %1 is not whitelisted!", _functionName]] call BIS_fnc_error;
+	["BTK_fnc_mpExec", format["Function %1 is not whitelisted!", _functionName]] call BTK_fnc_error;
 };
 
 
@@ -56,6 +56,7 @@ if ((toLower _functionName) in _commands) then {
 		case ("enablesimulation") : { (_parameter select 0) enableSimulation (_parameter select 1); };
 		case ("globalchat") : { (_parameter select 0) globalChat (_parameter select 1); };
 		case ("groupchat") : { (_parameter select 0) groupChat (_parameter select 1); };
+		case ("hideobject") : { (_parameter select 0) hideObject (_parameter select 1); };
 		case ("hint") : { hint (_parameter select 0); };
 		case ("moveincargo") : { if (local (_parameter select 0)) then { (_parameter select 0) moveInCargo (_parameter select 1); }; };
 		case ("ordergetin") : { if (local (_parameter select 0)) then { (_parameter select 0) orderGetIn (_parameter select 1); }; };
@@ -64,6 +65,7 @@ if ((toLower _functionName) in _commands) then {
 		case ("playmusic") : { playMusic (_parameter select 0); };
 		case ("playsound") : { playSound (_parameter select 0); };
 		case ("playactionnow") : { if (local (_parameter select 0)) then { (_parameter select 0) playActionNow (_parameter select 1); }; };
+		case ("say3d") : { (_parameter select 0) say3D (_parameter select 1); };
 		case ("say") : { (_parameter select 0) say (_parameter select 1); };
 		case ("setcaptive") : { (_parameter select 0) setCaptive (_parameter select 1); };
 		case ("setdir") : { (_parameter select 0) setDir (_parameter select 1); };

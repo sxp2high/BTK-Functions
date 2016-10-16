@@ -15,13 +15,16 @@ class btk_functions {
 		file = "btk_functions\functions";
 
 		class addonNote { description = "BTK Addon readme notes."; }; // BTK_fnc_addonNote
-		class arrayDelete { description = ""; }; // BTK_fnc_arrayDelete
 		class arrayToString { description = "Convert array to string list."; }; // BTK_fnc_arrayToString
+		class arsenal { description = ""; }; // BTK_fnc_arsenal
+		class arsenalInit { description = ""; }; // BTK_fnc_arsenalInit
+		class countInArray { description = "Count how often entry is in array."; }; // BTK_fnc_countInArray
 		class countItems { description = "Returns how many of item X the unit has."; }; // BTK_fnc_countItems
 		class createMarker { description = "Creates a map marker."; }; // BTK_fnc_createMarker
 		class createNote { description = "Creates a diary note."; }; // BTK_fnc_createNote
 		class createTask { description = "Creates a task. More reliable and flexible than BIS_fnc_taskCreate."; }; // BTK_fnc_createTask
 		class createTrigger { description = "Creates a trigger."; }; // BTK_fnc_createTrigger
+		class deleteInArray { description = "Delete entry from array. (Including all duplicates)"; }; // BTK_fnc_deleteInArray
 		class error { description = "Show errors message and/or logs it."; }; // BTK_fnc_error
 		class fadeIn { description = "Fade in from black screen."; }; // BTK_fnc_fadeIn
 		class gearLoad { description = "Load gear for player saved by BTK_fnc_gearSave. (Ie after respawn)"; }; // BTK_fnc_gearLoad
@@ -63,7 +66,8 @@ class btk_functions {
 		class trackingMarker { description = "Return user GUI color in HTML or RGB."; }; // BTK_fnc_trackingMarker
 		class usercolor { description = "Return user GUI color in HTML or RGB."; }; // BTK_fnc_usercolor
 		class userconfig { description = "Load userconfig with 2 failsafes."; }; // BTK_fnc_userconfig
-		class vehicleRespawn { description = ""; }; // BTK_fnc_vehicleRespawn
+		class vehicleRespawn { description = "Vehicle respawn."; }; // BTK_fnc_vehicleRespawn
+		class weather { description = ""; }; // BTK_fnc_weather
 
 	};
 

@@ -16,7 +16,11 @@
 */
 
 
-private ["_loadout","_handgunWeapon","_handgunItems","_secondaryWeapon","_secondaryWeaponItems","_primaryWeapon","_primaryWeaponItems","_assignedItems","_backpack","_backpackItems","_uniform","_uniformItems","_vest","_vestItems","_magazines","_headgear","_goggles","_currentMuzzle","_magazinesCurrent","_magazinesRest"];
+private ["_loadout","_handgunWeapon","_handgunItems","_secondaryWeapon","_secondaryWeaponItems","_primaryWeapon","_primaryWeaponItems","_assignedItems","_backpack","_backpackItems","_uniform","_uniformItems","_vest","_vestItems","_magazines","_headgear","_goggles","_currentMuzzle","_magazinesCurrent","_magazinesRest","_designatorLoaded"];
+
+
+// Flag
+btk_gear_respawning = true;
 
 
 // Just in case
@@ -43,9 +47,11 @@ _uniformItems = (_loadout select 10);
 _vest = (_loadout select 11);
 _vestItems = (_loadout select 12);
 _magazines = (_loadout select 13);
-_headgear = (_loadout select 14);
-_goggles = (_loadout select 15);
-_currentMuzzle = (_loadout select 16);
+_grenades = (_loadout select 14);
+_headgear = (_loadout select 15);
+_goggles = (_loadout select 16);
+_currentMuzzle = (_loadout select 17);
+_designatorLoaded = (_loadout select 18);
 
 
 // Clear
@@ -63,7 +69,7 @@ removeAllHandgunItems player;
 
 
 // Add temp backback so we have some space to work with
-player addBackpack "B_Kitbag_mcamo";
+player addBackpack "B_Carryall_oucamo"; //B_Carryall_oucamo
 waitUntil {((backpack player) != "")};
 clearAllItemsFromBackpack player;
 
@@ -77,7 +83,7 @@ _magazinesCurrent = [];
 	} else {
 		_magazinesRest pushBack [(_x select 0), (_x select 1)];
 	};
-} forEach _magazinesAll;
+} forEach _magazines;
 
 
 // Add current mags
@@ -94,6 +100,10 @@ if (_primaryWeapon != "") then { player addWeapon _primaryWeapon; waitUntil {(pl
 if ((count _handgunItems) > 0) then { { if (_x != "") then { player addHandgunItem _x; } } forEach _handgunItems; };
 if ((count _secondaryWeaponItems) > 0) then { { if (_x != "") then { player addSecondaryWeaponItem _x; } } forEach _secondaryWeaponItems; };
 if ((count _primaryWeaponItems) > 0) then { { if (_x != "") then { player addPrimaryWeaponItem _x; } } forEach _primaryWeaponItems; };
+
+
+// Designator battery
+if ((_designatorLoaded > 0) && ("Laserdesignator" in _assignedItems)) then { player addMagazine "Laserbatteries"; };
 
 
 // Add assigned items + Workaround for binoculars & rangefinder
@@ -169,8 +179,15 @@ if (_goggles != "") then { player addGoggles _goggles; };
 { player addMagazine [(_x select 0), (_x select 1)]; } forEach _magazinesRest;
 
 
+// Add grenades
+{ player addMagazine _x; } forEach _grenades;
+
+
 // Select primary
 if (_currentMuzzle != "") then { player selectWeapon _currentMuzzle; };
+
+
+btk_gear_respawning = nil;
 
 
 true
