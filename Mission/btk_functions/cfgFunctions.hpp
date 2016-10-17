@@ -66,6 +66,7 @@ class btk_functions {
 		class trackingMarker { description = "Return user GUI color in HTML or RGB."; }; // BTK_fnc_trackingMarker
 		class usercolor { description = "Return user GUI color in HTML or RGB."; }; // BTK_fnc_usercolor
 		class userconfig { description = "Load userconfig with 2 failsafes."; }; // BTK_fnc_userconfig
+		class userconfigProfile { description = "Load userconfig from profileNamespace."; }; // BTK_fnc_userconfigProfile
 		class vehicleRespawn { description = "Vehicle respawn."; }; // BTK_fnc_vehicleRespawn
 		class weather { description = ""; }; // BTK_fnc_weather
 

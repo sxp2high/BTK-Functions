@@ -97,9 +97,9 @@ if (_primaryWeapon != "") then { player addWeapon _primaryWeapon; waitUntil {(pl
 
 
 // Add attachments
-if ((count _handgunItems) > 0) then { { if (_x != "") then { player addHandgunItem _x; } } forEach _handgunItems; };
-if ((count _secondaryWeaponItems) > 0) then { { if (_x != "") then { player addSecondaryWeaponItem _x; } } forEach _secondaryWeaponItems; };
-if ((count _primaryWeaponItems) > 0) then { { if (_x != "") then { player addPrimaryWeaponItem _x; } } forEach _primaryWeaponItems; };
+if ((count _handgunItems) > 0) then { { if ((_x != "") && (_x in _handgunItems)) then { player addHandgunItem _x; } } forEach _handgunItems; };
+if ((count _secondaryWeaponItems) > 0) then { { if ((_x != "") && (_x in _secondaryWeaponItems)) then { player addSecondaryWeaponItem _x; } } forEach _secondaryWeaponItems; };
+if ((count _primaryWeaponItems) > 0) then { { if ((_x != "") && (_x in _primaryWeaponItems)) then { player addPrimaryWeaponItem _x; } } forEach _primaryWeaponItems; };
 
 
 // Designator battery

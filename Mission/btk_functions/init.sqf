@@ -31,6 +31,14 @@ if (isServer) then {
 if (!(isNil "btk_functions_init")) exitWith {};
 
 
+// Userconfig
+_loaded = [["btk_functions_version", "1.0.0", true]] call BTK_fnc_userconfigProfile;
+
+
+// Make sure config is loaded
+waitUntil {_loaded};
+
+
 // Exit dedicated
 if (isDedicated) exitWith { btk_functions_init = true; };
 

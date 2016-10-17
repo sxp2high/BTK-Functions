@@ -9,19 +9,18 @@ if (isDedicated) exitWith {};
 
 // Parameter
 _density = 0.05;
-_colorCoef = 0.5;
 _newspapers = false;
 //_paths = ["\A3\data_f\cl_grass1.p3d","\A3\data_f\cl_grass2.p3d","\A3\data_f\cl_rock1.p3d","\A3\data_f\cl_leaf.p3d","\A3\data_f\cl_leaf2.p3d","\A3\data_f\cl_leaf3.p3d","\A3\data_f\cl_feathers2.p3d","\A3\data_f\cl_paper1.p3d","\A3\data_f\cl_plastic1.p3d"];
 
 
 // Dust
-_duration = 1.3;
+_duration = 3;
 //_velocity = [0, 7, 0];
 _velocity = [(wind select 0), (wind select 1), 0];
 _relPos = [-((_velocity select 1) * (_duration / 2)), 0, -6];
-_color = [(1.0 * _colorCoef), (0.9 * _colorCoef), (0.8 * _colorCoef)];
-_alpha = 0.2;
-_radius = 100;
+_color = [0.4, 0.3, 0.2];
+_alpha = 0.1;
+_radius = 50;
 _radiusHeight = 4;
 
 
@@ -49,7 +48,7 @@ while {true} do {
 
 	_ps = "#particlesource" createVehicleLocal _vehiclePos;
 	_ps setParticleParams [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 12, 8, 0], "", "Billboard", 1, _duration, _relPos, _velocity, 1, 1.275, 1, 0, [5], [_color + [0], _color + [_alpha], _color + [0]], [1000], 1, 0, "", "", _vehicle];
-	_ps setParticleRandom [2, [_radius, _radius, _radiusHeight], [0, 0, 0], 1, 0, [0, 0, 0, 0.05], 0, 0];
+	_ps setParticleRandom [_duration, [_radius, _radius, _radiusHeight], [0, 0, 0], 1, 0, [0, 0, 0, 0.05], 0, 0];
 	_ps setParticleCircle [0.2, [0, 0, 0]];
 	_ps setDropInterval _density;
 

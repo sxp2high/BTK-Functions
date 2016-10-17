@@ -73,6 +73,5 @@ _designatorLoaded = (player ammo "Laserdesignator");
 // Compile
 btk_gear_saved = [_handgunWeapon,_handgunItems,_secondaryWeapon,_secondaryWeaponItems,_primaryWeapon,_primaryWeaponItems,_assignedItems,_backpack,_backpackItems,_uniform,_uniformItems,_vest,_vestItems,_magazines,_grenades,_headgear,_goggles,_currentMuzzle,_designatorLoaded];
 
-systemChat "gear saved";
 
 true
